@@ -16,7 +16,7 @@ import javax.validation.constraints.NotNull;
 
 /**
  *
- * @author bikesh
+ * @author bikesh and alfa
  */
 @Entity
 @Table(name = "chapters")
