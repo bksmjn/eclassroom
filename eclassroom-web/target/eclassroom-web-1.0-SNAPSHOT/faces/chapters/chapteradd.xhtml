@@ -1,0 +1,56 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:component="http://java.sun.com/jsf/composite/components/toolbar">
+    <ui:composition template="/WEB-INF/template/template.xhtml">
+        <ui:define name="toolbar">
+            <component:toolbar onSave="saveBtn" savePermissionKey="true" updatePermissionKey="true"/>
+        </ui:define>
+        <ui:define name="content">
+            <ui:include src="topicAdd.xhtml" />
+            <h:form id="chapterAdd" prependId="false">
+                <p:panel style="border: none;" id="chapterAddPanel">
+                    <f:facet name="header">
+                        <label>Chapters &raquo; Entries &raquo; Add Chapter</label>
+                    </f:facet>
+                    <h:panelGrid columns="3"  style="font-size: small">
+                        <h:outputLabel id="lblchapterTitle" value="Title" for="chapterTitle"/>
+                        <h:inputText id="chapterTitle" value="#{chapterAddBean.chapter.title}"/>
+                        <h:message id="inchapterTitle" for="chapterTitle"/>
+
+                        <h:outputLabel id="lblCourse" value="Course" for="courses"/>
+                        <h:selectOneMenu id="courses" value="#{chapterAddBean.chapter.courseCode}">
+                            <f:selectItem itemLabel="Select" itemValue="" />
+                            <f:selectItems value="#{chapterAddBean.allCourses}" />
+                        </h:selectOneMenu>
+                        <h:message id="incourses" for="courses"/>
+                    </h:panelGrid>
+                </p:panel>
+                <p:commandButton value="Add" oncomplete="PF('topicAdd').show();"></p:commandButton>
+                <p:panel  id="tablePanel">
+                    <f:facet name="header">
+                        <label>Topic Details</label>
+                    </f:facet>
+                    <p:dataTable rowIndexVar="index" var="topic" value="#{chapterAddBean.chapter.topics}" id="topicTable">
+                        <p:column headerText="SNo">
+                            <h:outputText value="#{index+1}" />
+                        </p:column>
+                        <p:column headerText="Title">
+                            <h:outputText value="#{topic.title}" />
+                        </p:column>
+                        <p:column headerText="Description">
+                            <h:outputText value="#{topic.description}" />
+                        </p:column>
+                    </p:dataTable>
+                </p:panel>
+                <h:commandButton id="saveBtn" style="display: none;" value="Save">
+                    <f:ajax listener="#{chapterAddBean.saveButtonClickedHandler}" execute="@form" render=":chapterAdd :msg_global"/>
+                </h:commandButton>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+</html>

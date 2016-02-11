@@ -1,0 +1,62 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <ui:composition template="/WEB-INF/template/template.xhtml">
+        <ui:define name="content">
+            <h:form id="user_list" prependId="false">
+                <p:panel style="border: none;" id="user_search_panel">
+                    <f:facet name="header">
+                        <label>User Management &raquo; Queries &raquo; User Search</label>
+                    </f:facet> 
+                    <h:panelGrid columns="9">
+                        <h:outputLabel id="lblUserName" value="Email Address" rendered="true" for="user_name"/>
+                        <h:inputText id="user_name" value="#{userListBean.emailAddress}"/>
+                        <h:outputText value="&nbsp;&nbsp;" />
+
+                        <h:outputLabel id="lblRoleId" value="Role" for="role"/>
+                        <h:selectOneMenu id="role" value="#{userListBean.roleId}">
+                            <f:selectItem itemLabel="Select Role" itemValue="" />
+                            <f:selectItem itemLabel="ADMIN" itemValue="ROLE_ADMIN" />
+                            <f:selectItem itemLabel="PROFESSOR" itemValue="ROLE_PROFESSOR" />
+                            <f:selectItem itemLabel="STUDENT" itemValue="ROLE_STUDENT" />
+
+                        </h:selectOneMenu>
+                        <h:outputText value="&nbsp;" />
+                        <h:commandButton value="Search">
+                            <f:ajax render=":user_list_panel userTable" listener="#{userListBean.searchButtonClickedHandler}" execute="@form" />
+                        </h:commandButton>
+
+                    </h:panelGrid>
+                </p:panel>
+
+                <p:panel style="border: none;" id="user_list_panel">
+                    <f:facet name="header">
+                        <label>User List</label>
+                    </f:facet> 
+                    <p:dataTable var="users" value="#{userListBean.users}" id="userTable">
+                        <p:column headerText="User Name">
+                            <h:outputText value="#{users.userName}" />
+                        </p:column>
+                        <p:column headerText="Email Address">
+                            <h:outputText value="#{users.emailAddress}" />
+                        </p:column>
+
+                        <p:column headerText="Role">
+                            <h:outputText value="#{users.role}" />
+                        </p:column>
+                        <p:column headerText="">
+                            <h:outputLink id="editLink"  value="#{request.contextPath}/faces/users/useredit.xhtml">
+                                <f:param name="emailAddress" value="#{users.emailAddress}"/>
+                                Edit
+                            </h:outputLink>
+                        </p:column>
+                    </p:dataTable>
+                </p:panel>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+</html>

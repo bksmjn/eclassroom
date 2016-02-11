@@ -1,0 +1,272 @@
+body {
+    background-color: #ffffff;
+    font-size: 12px;
+    font-family: Verdana, "Verdana CE",  Arial, "Arial CE", "Lucida Grande CE", lucida, "Helvetica CE", sans-serif;
+    color: #000000;
+    margin: 10px;
+}
+
+
+.ui-widget .ui-widget {
+    font-size:14px;
+}
+
+.ui-panel-content {
+    font-size: 12px;
+}
+.ui-tabs .ui-tabs-nav {
+    font-size:12px;
+}
+
+.ui-tabs-panel {
+    font-size: 12px;
+}
+
+.ui-datatable table {
+    font-size:  12px;
+}
+
+.ui-button-text-only .ui-button-text {
+    font-size: 10px;
+}
+
+#footer .copyright {
+    float:left;
+}
+
+#footer p {
+    font-size:smaller;
+    margin:0;
+    padding:2px 0 0;
+    text-align:center;
+}
+
+#ui-growl-item {
+    top:120px;
+    left:20px;
+}
+
+.odd{
+    background: red;
+}
+.goodTran{
+    background: #6eac2c;
+}
+.topupstatus{
+    background: #EDE18D;
+}
+.btn{
+    background: none;
+}
+.ui-messages-info{
+    width: 450px;
+    color: green;
+    background: #ffffff;
+    font-weight: normal;
+    border: none;
+    font-size: small;
+    margin-top: 7px;
+}
+
+.ui-messages-error{
+    width: 450px;
+    color: red;
+    background: #ffffff;
+    border: none;
+    font-size: small;
+    margin-top: 7px;
+
+}
+
+.popup-verification-tab{
+    font-size:130%;
+}
+
+.popup-verification{
+    font-size:110%;
+}
+
+.popup-log{
+    font-size:110%;
+    overflow: auto;
+    width: 100%;
+}
+
+a,
+a:hover,
+a:focus,
+a:active
+{
+    text-decoration: none;
+}
+
+a:hover {
+    color: red;
+}
+
+img
+{
+    border: medium none;
+}
+
+.view
+{
+    background-image: url('../icons/view.png');
+    background-repeat: no-repeat;
+    padding-left: 12px;  /* width of the image plus a little extra padding */
+    text-decoration: underline;
+    color: red;
+}
+
+
+.ui-datatable-odd{
+    background: #DDDDDD;
+}
+
+.failStatus,.inactiveStatus{
+    color: red;
+}
+
+.deleteButton,.enableORdisableButton
+{
+    background-repeat: no-repeat;
+    padding-left: 12px;  /* width of the image plus a little extra padding */
+    color: red;
+}
+
+.deleteButton
+{
+    background-image: url('../icons/deleteBin.png');
+}
+
+.defaultButton,.default
+{
+    background-repeat: no-repeat;
+    padding-left: 12px;  /* width of the image plus a little extra padding */
+    color: red;
+}
+.defaultButton{
+    background-image: url('../icons/default.png');
+}
+
+.enableORdisableButton
+{
+    background-image: url('../icons/enableORdisable.png');
+}
+.input-mask{
+    color: red;
+    background: white;
+    background-color: green;
+}
+
+.ui-icon-viewDetail {
+    background-image: url(../icons/view.png);
+}
+
+.ui-commandlink {
+    text-decoration: underline;
+}
+
+
+element.style {
+    display: block;
+    width:50px;
+
+}
+
+.buttonDiv{
+    padding: 0;
+}
+
+
+.customTD td {
+    padding: 5px 25px;
+}
+
+.customHeader {
+    width: 16%;
+    float: left;
+    padding: 10px 0px;
+}
+.customTR table{
+    width: 60%;
+}
+
+.myTable tr:nth-child(even) { /*(even) or (2n 0)*/
+    background: #A4D1FF;
+}
+.myTable tr:nth-child(odd) { /*(odd) or (2n 1)*/
+    background: #EAF4FF;
+}
+.evenRow{
+    background: #A4D1FF;
+}
+.oddRow{
+    background: #EAF4FF;
+}
+.tableColumnHeader{
+    background: #2191c0;
+}
+.customTD {
+    padding: 0px 15px;
+    width: 20%;
+}
+.error_msg{
+    color: #F00;
+}
+
+.home-bankinfo-table{
+    width: 100%;
+    font-size: small;
+    font-weight: bold;
+}
+
+.userparameter{
+    width: 230px;
+}
+.list-header {
+    background-color: #ffffff;
+    color: #000000;
+    text-align: center;
+}
+
+.changedAttributes{
+    background-color: #F00;
+
+}
+
+.Table
+{
+    display: table;
+    border:1px solid #77d5f7;
+}
+.Title
+{
+    display: table-caption;
+    text-align: center;
+    font-weight: bold;
+    font-size: larger;
+}
+.Heading
+{
+    display: table-row;
+    font-weight: bold;
+    text-align: center;
+}
+.Row
+{
+    display: table-row;
+}
+.Cell
+{
+    display: table-cell;
+    border: 1px solid #77d5f7;
+    border-width: thin;
+    padding:4px;
+}
+.customerTextField{
+    width: 125px;
+}
+.customerTextField1{
+    width: 80px;
+}

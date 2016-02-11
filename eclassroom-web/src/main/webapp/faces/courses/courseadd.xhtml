@@ -1,0 +1,46 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:component="http://java.sun.com/jsf/composite/components/toolbar">
+    <ui:composition template="/WEB-INF/template/template.xhtml">
+        <ui:define name="toolbar">
+            <component:toolbar onSave="saveBtn" savePermissionKey="true" updatePermissionKey="true"/>
+        </ui:define>
+        <ui:define name="content">
+            <h:form id="courseAdd" prependId="false">
+                <p:panel style="border: none;" id="courseAddPanel">
+                    <f:facet name="header">
+                        <label>User Management &raquo; Entries &raquo; Add Course</label>
+                    </f:facet>
+                    <h:panelGrid columns="3"  style="font-size: small">
+                        <h:outputLabel id="lblCourseCode" value="Code" for="courseCode"/>
+                        <h:inputText id="courseCode" value="#{courseAddBean.course.courseCode}"/>
+                        <h:message id="incourseCode" for="courseCode"/>
+
+                        <h:outputLabel id="lblCourseDesc" value="Course Description" for="courseDescription"/>
+                        <h:inputText id="courseDescription" value="#{courseAddBean.course.courseDescription}"/>
+                        <h:message id="incourseDescription" for="courseDescription"/>
+
+                        <h:outputLabel id="lblTitle" value="Title" for="title"/>
+                        <h:inputText id="title" value="#{courseAddBean.course.courseTitle}"/>
+                        <h:message id="intitle" for="title"/>
+
+                        <h:outputLabel id="lbllevel" value="Level" for="level"/>
+                        <h:inputText id="level" value="#{courseAddBean.course.courseLevel}"/>
+                        <h:message id="inlevel" for="level"/>
+
+
+
+                    </h:panelGrid>
+                    <h:commandButton id="saveBtn" style="display: none;" value="Save">
+                        <f:ajax listener="#{courseAddBean.saveButtonClickedHandler}" execute="@form" render=":courseAdd :msg_global"/>
+                    </h:commandButton>
+                </p:panel>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+</html>

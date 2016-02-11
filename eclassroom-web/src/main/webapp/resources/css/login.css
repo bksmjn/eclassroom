@@ -1,0 +1,25 @@
+.wraper{
+    margin: 10% auto;
+}
+h1.widget-title {
+    background:  repeat-x scroll 50% 50% #2191c0;
+    border-radius: 3px;
+    color: #f9f7f7;
+    font-size: 24px;
+    padding: 4px 10px;
+    text-align: center;
+}
+.loginForm{
+    width: 500px;
+    height: auto;
+    border: 1px solid #2191c0;
+}
+.loginForm form{
+    padding: 10px 0;
+}
+h1.widget-title{
+    width: 500px;
+    height: auto;
+    margin: 0; padding: 0;
+}
+

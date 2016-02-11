@@ -1,0 +1,80 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:component="http://java.sun.com/jsf/composite/components/toolbar">
+    <ui:composition template="/WEB-INF/template/template.xhtml">
+        <ui:define name="toolbar">
+            <component:toolbar onSave="saveBtn" savePermissionKey="true" updatePermissionKey="true"/>
+        </ui:define>
+        <ui:define name="content">
+            <h:form id="userAdd" prependId="false">
+                <p:panel style="border: none;" id="userAddPanel">
+                    <f:facet name="header">
+                        <label>User Management &raquo; Entries &raquo; Add User</label>
+                    </f:facet>
+                    <h:panelGrid columns="3"  style="font-size: small">
+                        <h:outputLabel id="lblFullName" value="Full Name" for="fullName"/>
+                        <h:inputText id="fullName" value="#{userAddBean.user.userName}"/>
+                        <h:message id="infullName" for="fullName"/>
+                        
+                        
+                        <h:outputLabel id="lblUserName" value="Email Address" for="emailAddress"/>
+                        <h:inputText id="emailAddress" value="#{userAddBean.user.emailAddress}"/>
+                        <h:message id="inemailAddress" for="emailAddress"/>
+
+                        <h:outputLabel id="lblPassword" value="Password" for="password"/>
+                        <h:inputSecret id="password" value="#{userAddBean.user.password}"/>
+                        <h:message id="inpassword" for="password"/>
+
+                        <h:outputLabel id="lblRole" value="Role" rendered="true" for="role"/>
+                        <h:selectOneMenu id="role" value="#{userAddBean.user.role}">
+                            <f:selectItem itemLabel="Select" itemValue=" " />
+                            <f:selectItem itemLabel="ADMIN" itemValue="ROLE_ADMIN" />
+                            <f:selectItem itemLabel="STUDENT" itemValue="ROLE_STUDENT" />
+                            <f:selectItem itemLabel="PROFESSOR" itemValue="ROLE_PROFESSOR" />
+                        </h:selectOneMenu>
+                        <h:message id="inrole" for="role"/>
+                    </h:panelGrid>
+                </p:panel>
+
+                <p:panel  style="width: 33%;" id="course_add_panel">
+                    <f:facet  name="header">
+                        <label>Add Courses</label>
+                    </f:facet>
+                    <h:panelGrid columns="3"  style="font-size: small">
+                        <h:outputLabel id="lblCourses" value="Courses" for="courses"/>
+                        <h:selectOneMenu id="courses" value="#{userAddBean.courseCode}">
+                            <f:selectItem itemLabel="Select" itemValue="" />
+                            <f:selectItems value="#{userAddBean.allCourses}" />
+                        </h:selectOneMenu>
+
+                        <h:commandButton value="Add" type="button">
+                            <f:ajax event="click" execute="courses" listener="#{userAddBean.addCourseButtonClickedHandler}" render=":course_add_panel" />
+                        </h:commandButton>
+
+                    </h:panelGrid>
+                    <p:dataTable  var="courses" rendered="#{not empty userAddBean.user.courses}" value="#{userAddBean.user.courses}" id="supervisorTable">
+                        <p:column headerText="Course Code">
+                            <h:outputText value="#{courses.courseCode}" />
+                        </p:column>
+                        <p:column headerText="Course Title">
+                            <h:outputText value="#{courses.courseTitle}" />
+                        </p:column>
+                        <p:column headerText="Course Description">
+                            <h:outputText value="#{courses.courseDescription}" />
+                        </p:column>
+                    </p:dataTable>
+                </p:panel>
+                <h:commandButton id="saveBtn" style="display: none;" value="Save">
+                    <f:ajax listener="#{userAddBean.saveButtonClickedHandler}" execute="@form" render=":userAdd :msg_global"/>
+                </h:commandButton>
+            </h:form>
+
+        </ui:define>
+    </ui:composition>
+</html>
+

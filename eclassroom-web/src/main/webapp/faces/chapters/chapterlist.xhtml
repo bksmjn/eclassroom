@@ -1,0 +1,48 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <ui:composition template="/WEB-INF/template/template.xhtml">
+        <ui:define name="content">
+            <h:form id="chapterList" prependId="false">
+                <p:panel style="border: none;" id="chapter_panel">
+                    <f:facet name="header">
+                        <label>Chapter &raquo; Queries &raquo; Chapter List</label>
+                    </f:facet> 
+                    <h:panelGrid columns="9">
+                        <h:outputLabel id="lblCourseCode" value="Course Code" rendered="true" for="courseCode"/>
+                        <h:inputText id="courseCode" value="#{chapterListBean.courseCode}" />
+                        <h:outputText value="&nbsp;&nbsp;" />
+
+                        <h:commandButton value="Search">
+                            <f:ajax render=":chapterList_panel chapterTable"  listener="#{chapterListBean.searchButtonClickedHandler}" execute="@form" />
+                        </h:commandButton> 
+
+                    </h:panelGrid>
+                </p:panel>
+                <p:panel style="border: none;" id="chapterList_panel">
+                    <f:facet name="header">
+                        <label>Chapter List</label>
+                    </f:facet> 
+                    <p:dataTable var="chapter" value="#{chapterListBean.chapters}" id="chapterTable">
+                        <p:column headerText="SNo">
+                            <h:outputText value="#{chapter.id}" />
+                        </p:column>
+                        <p:column headerText="Title">
+                            <h:outputText value="#{chapter.title}" />
+                        </p:column>
+                        <p:column headerText="">
+                            <h:outputLink id="editLink"  value="#{request.contextPath}/faces/chapters/topiclist.xhtml">
+                                <f:param name="chapterId" value="#{chapter.id}"/>
+                                View Details
+                            </h:outputLink>
+                        </p:column> 
+                    </p:dataTable>
+                </p:panel>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+</html>

@@ -1,0 +1,31 @@
+<p:dialog 
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:p="http://primefaces.org/ui"
+    xmlns:f="http://java.sun.com/jsf/core"
+    header="Add Topic"  widgetVar="topicAdd" height="250" width="600" id="topic_panel">
+    <h:form enctype="multipart/form-data"
+            prependId="false" id="topic_add_form">
+        <p:panel style="border: none;" id="topicAddPanel">
+            <h:panelGrid columns="2"  id="topicadd_info">
+
+                <h:outputLabel id="lbltopic_Title" value="Title" rendered="true" for="topicTitle"/>
+                <h:inputText id="topicTitle" value="#{chapterAddBean.topic.title}" />
+
+                <h:outputLabel id="lbltopicDescription" value="Description" rendered="true" for="topicdescription"/>
+                <h:inputTextarea rows="5" cols="40" id="topicdescription" value="#{chapterAddBean.topic.description}" />
+
+                <h:outputLabel id="lbl" value=" " rendered="true" for="fileUp"/>
+                <p:fileUpload id="fileUp" fileUploadListener="#{chapterAddBean.handleFileUpload}" mode="advanced" dragDropSupport="false"
+                              sizeLimit="100000" fileLimit="3" />
+
+                <p:commandButton value="Save" actionListener="#{chapterAddBean.addTopic}" oncomplete="PF('topicAdd').hide();" update=":chapterAdd" />
+                <p:commandButton value=" Cancel " oncomplete="PF('topicAdd').hide();"/>
+            </h:panelGrid>
+
+        </p:panel>
+
+    </h:form>
+</p:dialog>
+

@@ -1,0 +1,52 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <ui:composition template="/WEB-INF/template/template.xhtml">
+        <ui:define name="content">
+            <h:form id="course_list" prependId="false">
+                <p:panel style="border: none;" id="course_search_panel">
+                    <f:facet name="header">
+                        <label>User Management &raquo; Queries &raquo; Course Search</label>
+                    </f:facet> 
+                    <h:panelGrid columns="9">
+                        <h:outputLabel id="lblCourseCode" value="Course Code" rendered="true" for="course_code"/>
+                        <h:inputText id="course_code" value="#{courseListBean.courseCode}"/>
+                        <h:outputText value="&nbsp;&nbsp;" />
+                        <h:commandButton value="Search">
+                            <f:ajax render=":course_list_panel courseTable" listener="#{courseListBean.searchButtonClickedHandler}" execute="@form" />
+                        </h:commandButton>
+
+                    </h:panelGrid>
+                </p:panel>
+
+                <p:panel style="border: none;" id="course_list_panel">
+                    <f:facet name="header">
+                        <label>Course List</label>
+                    </f:facet> 
+                    <p:dataTable var="c" value="#{courseListBean.courses}" id="courseTable">
+                        <p:column headerText="Code">
+                            <h:outputText value="#{c.courseCode}" />
+                        </p:column>
+                        <p:column headerText="Title">
+                            <h:outputText value="#{c.courseTitle}" />
+                        </p:column>
+
+                        <p:column headerText="Description">
+                            <h:outputText value="#{c.courseDescription}" />
+                        </p:column>
+                        <p:column headerText="">
+                            <h:outputLink id="editLink"  value="#{request.contextPath}/faces/users/useredit.xhtml">
+                                <f:param name="code" value="#{c.courseCode}"/>
+                                Edit
+                            </h:outputLink>
+                        </p:column>
+                    </p:dataTable>
+                </p:panel>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+</html>

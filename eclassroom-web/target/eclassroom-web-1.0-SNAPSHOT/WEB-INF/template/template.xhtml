@@ -1,0 +1,158 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:o="http://omnifaces.org/ui">
+
+    <h:head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <h:outputStylesheet library="css" name="layout.css" />
+        <link type="text/css" rel="stylesheet"
+              href="#{request.contextPath}/resources/css/default.css" />
+        <link rel="icon" href="${request.contextPath}/resources/images/favicon.ico" type="image/x-icon"/>
+        <title>EClassRoom<ui:insert
+                name="title" /></title>
+        <style type="text/css">
+            .search_field {
+                display: inline-block;
+
+            }
+
+            .search_field img {
+                border: none;
+                background: none;
+            }
+        </style>
+    </h:head>
+
+    <h:body>
+        <p:layout fullPage="true">
+
+            <p:layoutUnit position="north"  size="70" id="topId" style="border: none;">
+                <div id="top" class="ui-widget ui-widget-header"
+                     style="height: 100%;" align="center">
+                    <div style="float: right; width: 80px; margin-top:10px ; text-align: right;">
+
+                        <span>
+                            <a href="#{request.contextPath}/protected/home.xhtml"> 
+                                <img title="Home" style="width:32px; height: 32px" src="#{request.contextPath}/resources/images/home.png" />
+                            </a> 
+                        </span>
+
+                        <span>
+                            <a href="#{request.contextPath}/logout"> 
+                                <img title="Logout" style="width:32px; height: 32px" src="#{request.contextPath}/resources/images/logout.png" />
+                            </a> 
+                        </span>
+                    </div>
+
+                    <div style="float: right; width: 140px; margin-top:10px; text-align: right;">
+                        <ui:insert name="toolbar"></ui:insert>
+                    </div>
+
+                    <div style="float: left; width: 400px; text-align: left; margin-top:-7px;">
+                        <br/>
+                        <h:outputText value="&nbsp;" />
+                        <h:outputText value="&nbsp;" />
+                        <span>
+                            <a href="http://www.google.com" target="_blank"> 
+                                <img title="Drose Technologies" style="width:80px; height: 40px" src="#{request.contextPath}/resources/images/logo.gif" />
+                            </a> 
+                        </span>
+                    </div>
+                    <div align="center">
+                        <p:messages globalOnly="true" showDetail="true" showSummary="false" redisplay="true" id="msg_global" />
+                    </div>
+                </div>
+            </p:layoutUnit>
+
+            <p:layoutUnit position="south">
+                <h:form>
+                    <div class="ui-layout-unit-header ui-widget-header ui-corner-all">
+                        <div style="margin-left: 40%;">
+                            <span>
+                                <label>&copy;Maharishi University of Management&nbsp;</label>
+                            </span>
+                        </div>
+                    </div>
+                </h:form>
+            </p:layoutUnit>
+
+            <p:layoutUnit position="west" resizable="true" size="250" style="border: none;">
+                <h:form>
+                    <div class=" ui-breadcrumb ui-panelmenu-header ui-state-default">
+                        <div style="float: left; margin-top: 2px; text-align: center; padding: 0px 5px;">
+                            <img title="user" style="height: 20px;" src="#{request.contextPath}/resources/images/user.png" />
+                            &nbsp;&nbsp;<b><h:outputText value="#{templateController.userName}" /></b>
+                        </div>
+                    </div>
+                    <o:cache key="userMenuCache">
+                        <p:panelMenu style="width:100%" model="#{userMenuBean.menuModel}"/>
+                    </o:cache>
+                </h:form>
+            </p:layoutUnit>
+
+            <p:layoutUnit position="center" resizable="true">
+                <p:ajaxStatus />
+                <p:dialog>
+                    <h:graphicImage value="#{resource['images:ajaxloadingbar.gif']}" />
+                </p:dialog>
+                <ui:insert name="content">Content</ui:insert>
+            </p:layoutUnit>
+            <p:layoutUnit position="east" style="border: 0px; " size="250" >
+                <h:form prependId="false">
+                    <p:panel  header="Important Notice" style="background: #F5F4F4;">
+                        <h:panelGrid columns="2" style="background: #F5F4F4; border: 0px;">
+
+
+                        </h:panelGrid>
+                    </p:panel>
+                </h:form>
+                <div>
+                    <p:panel style="background: #F5F4F4; height: 120px;"  header="Group Chat">
+
+
+                        <h:head>
+                            <title>Chat test!</title>
+                        </h:head>
+                        <script type="text/javascript">
+                            setInterval("nextMessage()", 200); //update the chart every 200 ms               
+
+                            function updateMessages(xhr, status, args) {
+                                if (!args.ok)
+                                    return;
+                                $('#chat').append('<div class="msg">[' + args.dateSent + '] <strong>' + args.user + '</strong>: ' + args.text + '</div>');
+                            }
+
+                        </script>
+                        <h:body>
+                            <h:form prependId="false">
+                                <h:panelGrid columns="2">
+                                    Name: <h:inputText style="width: 150px;" value="#{messageBean.message.user}"/>
+                                    Text: <h:inputText style="width: 150px;" value="#{messageBean.message.message}"/>
+                                    <p:commandButton type="reset" value="Clear"/>
+                                    <p:commandButton value="Send!" actionListener="#{messageBean.sendMessage}"/>
+                                </h:panelGrid>
+
+                                <p:remoteCommand name="nextMessage" actionListener="#{messageBean.firstUnreadMessage}"
+                                                 oncomplete="updateMessages(xhr, status, args);"/>
+                            </h:form>
+                            <hr/>
+                            <p:scrollPanel mode="native" style="width:200px;height:280px">
+                                <center><h3>Live chat</h3></center>
+                                <div id="chat"></div>
+                            </p:scrollPanel>
+
+                        </h:body>
+
+
+                    </p:panel>
+                </div>
+            </p:layoutUnit>
+        </p:layout>
+    </h:body>
+
+</html>
