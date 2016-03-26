@@ -117,12 +117,6 @@
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
         </dependency>
-        
-        <!--OMINIFACES-->
-        <dependency>
-            <groupId>org.omnifaces</groupId>
-            <artifactId>omnifaces</artifactId>
-        </dependency>
 
         <dependency>
             <groupId>javax.servlet</groupId>

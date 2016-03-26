@@ -159,12 +159,6 @@
                 
             </dependency>
             
-            <!--OMINIFACES-->
-            <dependency>
-                <groupId>org.omnifaces</groupId>
-                <artifactId>omnifaces</artifactId>
-                <version>2.0</version>
-            </dependency>
             <!-- Spring Security -->
             <dependency>
                 <groupId>org.springframework.security</groupId>
