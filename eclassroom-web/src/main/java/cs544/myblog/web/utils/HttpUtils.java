@@ -1,10 +1,6 @@
 
 package cs544.myblog.web.utils;
 
-import java.util.Optional;
-import javax.faces.context.FacesContext;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 
 /**
  *
