@@ -129,17 +129,7 @@
 
                         </script>
                         <h:body>
-                            <h:form prependId="false">
-                                <h:panelGrid columns="2">
-                                    Name: <h:inputText style="width: 150px;" value="#{messageBean.message.user}"/>
-                                    Text: <h:inputText style="width: 150px;" value="#{messageBean.message.message}"/>
-                                    <p:commandButton type="reset" value="Clear"/>
-                                    <p:commandButton value="Send!" actionListener="#{messageBean.sendMessage}"/>
-                                </h:panelGrid>
-
-                                <p:remoteCommand name="nextMessage" actionListener="#{messageBean.firstUnreadMessage}"
-                                                 oncomplete="updateMessages(xhr, status, args);"/>
-                            </h:form>
+                       
                             <hr/>
                             <p:scrollPanel mode="native" style="width:200px;height:280px">
                                 <center><h3>Live chat</h3></center>

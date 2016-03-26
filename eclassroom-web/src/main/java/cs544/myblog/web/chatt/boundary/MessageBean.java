@@ -10,6 +10,23 @@ package cs544.myblog.web.chatt.boundary;
  * @author FaRiii
  */
 
+//
+//
+//     <h:form prependId="false">
+//                                <h:panelGrid columns="2">
+//                                    Name: <h:inputText style="width: 150px;" value="#{messageBean.message.user}"/>
+//                                    Text: <h:inputText style="width: 150px;" value="#{messageBean.message.message}"/>
+//                                    <p:commandButton type="reset" value="Clear"/>
+//                                    <p:commandButton value="Send!" actionListener="#{messageBean.sendMessage}"/>
+//                                </h:panelGrid>
+//
+//                                <p:remoteCommand name="nextMessage" actionListener="#{messageBean.firstUnreadMessage}"
+//                                                 oncomplete="updateMessages(xhr, status, args);"/>
+//                            </h:form>
+
+
+
+
  
 /**
  *
