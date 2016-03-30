@@ -32,7 +32,7 @@ public class UserMenuBean implements Serializable {
     @PostConstruct
     private void init() {
         this.menuModel = new DefaultMenuModel();
-        this.menus = new ArrayList<>();
+        this.menus = new ArrayList<ApplicationMenu>();
         User u = this.userFinder.findUserByEmailAddress(StartUpBean.getUserName());
         System.out.println("ROLE:" + StartUpBean.getRole());
         if (u.getRole().equals("ROLE_ADMIN")) {
@@ -142,7 +142,7 @@ public class UserMenuBean implements Serializable {
     }
 
     private List<ApplicationMenu> findApplicationMenuByTypeAndParenCode(ApplicationMenu.MenuType menuType, String parentCode) {
-        List<ApplicationMenu> filteredMenus = new ArrayList<>();
+        List<ApplicationMenu> filteredMenus = new ArrayList<ApplicationMenu>();
         for (ApplicationMenu menu : this.menus) {
             if (menu.getMenuType() == menuType && StringUtils.equals(menu.getParentCode(), parentCode)) {
                 filteredMenus.add(menu);
@@ -153,7 +153,7 @@ public class UserMenuBean implements Serializable {
     }
 
     private List<ApplicationMenu> findAllTopLevelApplicationMenu(ApplicationMenu.MenuType menuType) {
-        List<ApplicationMenu> filteredMenus = new ArrayList<>();
+        List<ApplicationMenu> filteredMenus = new ArrayList<ApplicationMenu>();
         for (ApplicationMenu menu : this.menus) {
             if (menu.getMenuType() == menuType) {
                 filteredMenus.add(menu);

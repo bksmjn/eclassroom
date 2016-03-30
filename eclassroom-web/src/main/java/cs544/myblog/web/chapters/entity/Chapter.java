@@ -46,7 +46,7 @@ public class Chapter implements Serializable {
     public static final String FIND_BY_COURSE_ID = DOMAIN_PREFIX + "FIND_BY_COURSE_ID";
 
     public Chapter() {
-        this.topics = new ArrayList<>();
+        this.topics = new ArrayList<Topic>();
     }
 
     public int getId() {

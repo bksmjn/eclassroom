@@ -49,7 +49,7 @@ public class User implements Serializable {
     public static final String FIND_BY_USERNAME = DOMAIN_PREFIX + "FIND_BY_USERNAME";
 
     public User() {
-        this.courses = new ArrayList<>();
+        this.courses = new ArrayList<Course>();
     }
 
     public int getUserId() {

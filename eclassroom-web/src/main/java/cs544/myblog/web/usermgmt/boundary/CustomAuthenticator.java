@@ -54,7 +54,7 @@ public class CustomAuthenticator implements AuthenticationProvider {
         if (email.equals(user.getEmailAddress()) && password.equals(user.getPassword())) {
             User u = this.userFinder.findUserByEmailAddress(email);
             StartUpBean.setRole(u.getRole());
-            List<GrantedAuthority> grantedAuth = new ArrayList<>();
+            List<GrantedAuthority> grantedAuth = new ArrayList<GrantedAuthority>();
             grantedAuth.add(new SimpleGrantedAuthority(u.getRole()));
             Authentication auth = new UsernamePasswordAuthenticationToken(email, password, grantedAuth);
             return auth;

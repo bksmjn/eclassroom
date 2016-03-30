@@ -40,7 +40,7 @@ public class UserListBean implements Serializable {
     }
 
     public void searchButtonClickedHandler() {
-        this.users = new ArrayList<>();
+        this.users = new ArrayList<User>();
         this.users.add(this.userFinder.findUserByEmailAddress(emailAddress));
     }
 

@@ -72,7 +72,7 @@ public class UserAddBean implements Serializable {
     }
 
     public SelectItem[] getAllRoles() {
-        List<Role> roles = new ArrayList<>();
+        List<Role> roles = new ArrayList<Role>();
         roles.add(Role.STUDENT);
         roles.add(Role.PROFESSOR);
         roles.add(Role.ROLE_ADMIN);
